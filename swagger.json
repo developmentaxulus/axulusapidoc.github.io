@@ -1,0 +1,153 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Ax.Industry.Api",
+    "contact": {
+      "email": "{#RELEASE#}ContactEmail{#RELEASE#}",
+      "name": "{#RELEASE#}ContactName{#RELEASE#}"
+    }
+  },
+  "host": "{#RELEASE#}HostFunction{#RELEASE#}",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "industry"
+    },
+    {
+      "name": "health check"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/HealthCheck": {
+	  "summary": "Get-HealthCheck",
+      "get": {
+        "tags": [
+          "Health Check"
+        ],
+        "responses": {
+          "200": {
+            "description": "Function runninng OK"
+          }
+        }
+      }
+    },
+    "/Industry": {
+      "get": {
+	    "summary": "Get-Industry",
+        "tags": [
+          "Industry"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Function runninng OK"
+          }
+        }
+      },
+      "post": {
+	    "summary": "Create-Industry",
+        "tags": [
+          "Industry"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Industry"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation succedded"
+          },
+          "400": {
+            "description": "Bad Request HTTP Code with notification"
+          }
+        }
+      },
+      "put": {
+	    "summary": "Update-Industry",
+        "tags": [
+          "Industry"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Industry"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation succedded"
+          },
+          "400": {
+            "description": "Bad Request HTTP Code with notification"
+          },
+          "404": {
+            "description": "Object not found"
+          }
+        }
+      }
+    },
+    "/Industry/{industryId}": {
+      "delete": {
+		"summary": "Delete-Industry",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "industryId",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation succedded"
+          },
+          "404": {
+            "description": "Object not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Industry": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
